@@ -1,5 +1,6 @@
 superlottery
 ```java
+/*
 package javatest;
 
 public class test1 {

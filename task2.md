@@ -1,6 +1,8 @@
 superlottery
 ```java
 /*
+Create by c Date:2015.11.24
+*/
 package javatest;
 
 public class test1 {

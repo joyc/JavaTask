@@ -80,8 +80,8 @@ public class SuperLottery {
     public static void main(String[] args){
         int[] red = new int[35];    //声明并创建内存，红色球35个
         int[] blue = new int[12];   //声明并创建内存，蓝色球12个
-        int[] result = new int[7];  //声明并创建内存，开奖结果为7个数字
-        System.out.println("本期大乐透开奖结果是:");
+        int[] result = new int[7];  //声明并创建内存，开奖结果为7个数字                 这里感觉多余，跟开辟7个内存没啥关系
+
         /**
          * 循环红色球35个，随机选取不重复5个
          */
@@ -91,7 +91,7 @@ public class SuperLottery {
         for (int r2 = 0; r2 < 5; r2++) {    //取5个红色球
             int temp_r = red [new Random().nextInt(34)+1];  //随机选取从1到35之间的值
             if (isRepeat(result,temp_r)){  //判断是否重复
-                r2--;   //意思不明
+                r2--;   //这里的意思                                                           不太明白
                 continue;   //结束单次循环
             }
             result[r2] = temp_r;
@@ -115,7 +115,9 @@ public class SuperLottery {
         /**
          * 打印开奖结果
          */
-        System.out.println("本期大乐透开奖结果是:"+result[r2]+" "+result[b2]);
+//        System.out.println("本期大乐透开奖结果是:"+result[r2]+" "+result[b2]);              这里不对
     }
 }
 ```
+另，感觉没有对红色球和蓝色球的和去重，如果红蓝需要去重该如何判断。
+求助。

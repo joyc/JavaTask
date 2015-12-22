@@ -13,11 +13,11 @@ public class Mp3Read {
         listFilesMp3(file); //调用自定义方法列出 MP3文件
     }
 
-    // Q1 老师说要用递归查询是否为文件夹，这里的递归查询不会写，需请教请老师具体写法！！！
-    public static void listFilesMp3(File file){ //创建自定义方法查找mp3文件，假设为文件夹 // Q2 这里参数的设置麻烦讲解一下
+    // Q1 用递归查询是否为文件夹，这里的递归查询不会写！！！
+    public static void listFilesMp3(File file){ //创建自定义方法查找mp3文件，假设为文件夹 // Q2 这里参数的设置
 
         File[] files = file.listFiles();    // 该文件目录下文件全部放入数组
-        for (File f:files){ //循环遍历数组   // Q3 这个写法麻烦老师讲解一下
+        for (File f:files){ //循环遍历数组   // Q3 这个写法
             if (f.isDirectory()){
                 System.out.println("包含的子文件夹目录是："+f.getAbsolutePath());
                 listFilesMp3(f);    //如果是文件夹就重新遍历
@@ -26,7 +26,7 @@ public class Mp3Read {
             }
         }
 
-        String[] fileStrings=file.list(new FilenameFilter() {   //这里有点概念模糊，需老师解答
+        String[] fileStrings=file.list(new FilenameFilter() {   //这里有点概念模糊
 
             @Override   //这里不知道是否需要
             public boolean accept(File dir, String name) {  //用java.io包的FilenameFilter接口的accept方法查找

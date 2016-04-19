@@ -188,6 +188,22 @@ public class WrapperDemo01{
 	}
 };
 ```
-例子
+#### 异常处理Throw和Throws
+`throws`  
+在定义一个方法是可以使用throws关键字声明，使用throws声明的方法表示此方法不处理异常，而交给方法的调用处进行处理。throws用在方法声明处，表示本方法不处理异常。格式如下：
+```java
+public 返回值类型 方法名称（参数列表…） throws 异常类{}
+```
+*在主方法中使用了throws，程序主方法中就不用再使用try……catch了*
 
+`throw`  
+可以直接使用throw抛出一个异常，抛出时直接抛出异常类的实例化对象即可。throw表示在方法中手工抛出一个异常。*throw不会单独使用。*  
+##### 断言
+断言就是肯定某一个结果的返回值是正确的，如果最终此结果的返回值是错误的，则通过断言检查肯定会提示错误。如果boolean为true则不显示错误信息false则显示，一般开发中不建议用来检测。定义格式如下：
+```java
+assert boolean表达式;
+assert blooean表达式 : 详细的信息;
+```
+>异常的最大父类是Throwable，其分为两个子类Exception，Error。前者表示程序处理的异常，后者是JVM的错误信息。自定义异常时，只需继承Exception类即可。
 
+#### 包及访问权限

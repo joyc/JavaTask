@@ -1,3 +1,115 @@
+多态性  
+1. 方法的重载与覆写
+2. 对象的多态性  
+    ①.向上转型：子类对象→父类对象 （自动完成）  
+    ②.向下转型：父类对象→子类对象 （强制）  
+进行向下转型时，需首先发生对象的向上转型。  
+在进行对象的向下转型关系前最好先使用*instanceof*进行判断后再进行相应的转换操作，这样可以避免类型转换异常的出现。  
+
+注意：在类的设计中，不要集成一个已经实现的类，只能继承抽象类和实现接口。因为一旦发生对象向上转型后，所调用的方法一定是被子类所覆写的方法。  
+**接口**是解决多继承局限的一种手段，实际中更多的作用是用来制定标准。  
+#### 设计模式
+**工厂模式**  
+```java
+class Factory{
+	public static Fruit getInstance(String className){
+		Fruit f = null;
+		if ("apple".equals(className)){
+			f = new Apple();
+		}
+		if ("orange".equals(className)){
+			f = new Orange();
+		}
+		return f;
+	}
+}
+```
+程序在接口和子类之间加入了一个过渡端，通过此过渡端取得接口的实例化对象，这个过渡端称为工厂类。  
+字符串判断时把字符串常量放在前面会避免空指向异常。 
+#### 代理模式
+代理模式是指由一个代理主题来操作真实主题，真实主题执行具体的业务操作，而代理主题负责其他相关业务的处理。
+```java
+package InterfaceDemo;
+interface Network{
+	public void browse();
+}
+class Real implements Network{
+	public void browse(){
+		System.out.println("上网浏览信息");
+	}
+}
+class Proxy implements Network{
+	private Network network;
+	public Proxy(Network network){
+		this.network = network;
+	}
+	public void check(){
+		System.out.println("检查用户是否合法");
+	}
+	public void browse(){
+		this.check();
+		this.network.browse();
+	}
+}
+public class ProxyDemo {
+	public static void main(String args[]){
+		Network net = null;
+		net = new Proxy(new Real());
+		net.browse();
+	}
+}
+```
+#### 适配器模式
+如果一个类要实现一个接口，则必须要覆写此接口中的全部抽象方法，那么如果此时一个接口中定义的抽象方法过多，但是在子类中又用不到这么多抽象方法，肯定很麻烦，所以此时就需要一个中间的过渡，但是此时过渡类又不希望被直接使用，所以将此过渡类定义成抽象类最合适，即一个接口首先被一个抽象类先实现（此抽象类通常称为适配器类），并在此抽象类中实现若干方法（方法体为空），则以后的子类直接继承此抽象类，就可以有选择地覆写所需要的方法。
+```
+package InterfaceDemo;
+interface Window{
+	public void open();
+	public void close();
+	public void activated();
+	public void iconified();
+	public void deiconified();
+}
+abstract class WindowAdapter implements Window{
+	public void open(){}
+	public void close(){}
+	public void activated(){}
+	public void iconified(){}
+	public void deiconified(){}
+}
+class WindowImpl extends WindowAdapter{
+	public void open(){
+		System.out.println("窗口打开。");
+	}
+	public void close(){
+		System.out.println("窗口关闭。");
+	}
+}
+
+public class AdapterDemo {
+	public static void main(String[] args) {
+		Window win = new WindowImpl();
+		win.open();
+		win.close();
+	}
+}
+```
+
+序号 | 区别点 | 抽象类 | 接口
+:---:|---|---|---
+1 | 定义 | 包含一个抽象方法的类 | 抽象方法和全局变量的集合
+2 | 组成 | 构造方法，抽象方法，普通方法，常量，变量 | 常量，抽象方法
+3 | 使用 | 子类继承抽象类（extends） | 子类实现接口（implements）
+4 | 关系 | 抽象类可以实现多个接口 | 接口不能继承抽象类，但允许继承多个接口
+5 | 常见设计模式 | 模板设计 | 工厂设计，代理设计
+6 | 对象 |都通过对象的多态性产生实例化对象 | ← same
+7 | 局限 | 抽象类有单继承的局限 | 接口没有此局限
+8 | 实际 | 作为一个模板 | 作为一个标准或表示一种能力
+9 | 选择 | 如果抽象类和接口都可以使用，则优先使用接口，避免单继承的局限 | ← same 
+10 | 特殊 | 一个抽象类中可以包含多个接口，一个接口中可以包含多个抽象类 | ← same 
+注意：  
+一个类不要去继承一个已经实现好的类，只能继承抽象类或者实现接口，如果接口和抽象类都可以使用，那么悠闲使用接口，避免单继承局限。  
+
 ##### 宠物商店案例
 ```java
 package com.lxhjava;
@@ -207,3 +319,4 @@ assert blooean表达式 : 详细的信息;
 >异常的最大父类是Throwable，其分为两个子类Exception，Error。前者表示程序处理的异常，后者是JVM的错误信息。自定义异常时，只需继承Exception类即可。
 
 #### 包及访问权限
+

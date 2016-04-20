@@ -320,3 +320,17 @@ assert blooean表达式 : 详细的信息;
 
 #### 包及访问权限
 
+##### java常用系统包
+| 序号 | 包名称 | 作用 |
+| --- | --- | --- |
+| 1 | java.lang | 此包为基本包，String都保存在此包，jdk1.0后会自动导入。 |
+| 2 | java.lang.reflect | 反射机制包，是java.lang子包。 |
+| 3 | java.util | 工具包，常见类库，日期操作等都在此包，精通此包便于理解设计思路。 |
+| 4 | java.text | 提供文本处理类库。 |
+| 5 | java.sql | 数据库操作包，提供各数据库操作的类和接口。 |
+| 6 | java.net | 完成网络编程。 |
+| 7 | java.io | 输入输出处理。 |
+| 8 | java.awt | 包含了构成抽象窗口工具集(abstract window toolkits)的多个类，这些类用来构建和管理GUI。 |
+| 9 | javax.swing | 用于建立图形用户界面，组件相对java.awt是轻量级组件。 |
+
+士大夫

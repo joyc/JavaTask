@@ -333,4 +333,58 @@ assert blooean表达式 : 详细的信息;
 | 8 | java.awt | 包含了构成抽象窗口工具集(abstract window toolkits)的多个类，这些类用来构建和管理GUI。 |
 | 9 | javax.swing | 用于建立图形用户界面，组件相对java.awt是轻量级组件。 |
 
-士大夫
+##### 多线程
+实现 Runnable 接口相对于继承 Thread 类有如下优势：  
+1.适合多个相同程序代码的线程去处理同一资源的情况。  
+2.可以避免由 java 单继承特性带来的局限。  
+3.增强了程序的健壮性，代码能被多个线程共享，代码与数据是独立的。
+
+线程的5种状态：创建→就绪→运行→阻塞→终止  
+创建状态：Thread thread=new Thread();  
+就绪状态：调用该线程的start()方法就可启动线程  
+运行状态：调用该线程的run()方法  
+堵塞状态：sleep(),suspend(),wait()  
+死亡状态：调用该线程的stop()方法  
+
+#### Thread类中的主要方法
+| 序号 |方 法 名 称|类型|描述|
+| --- | --- | --- | --- |
+|1|public Thread(Runnable target)|构造|接收Runnable接口子类对象，实例化Thread对象|
+|2|public Thread(Runnable target,String name)|构造|接收Runnable接口子类对象，实例化Thread对象并设置线程名称|
+|3|public Thread(String name)|构造|实例化Thread对象并设置线程名称|
+|4|public static Thread currentThread()|普通|返回目前正在执行的线程|
+|5|public final String getName()|普通|返回线程的名称|
+|6|public final int getPriority()|普通|返回线程的优先级|
+|7|public boolean isInterrupted()|普通|判断线程是否被中断，返回布尔值|
+|8|public final boolean isAlive()|普通|判断线程是否在活动，返回布尔值|
+|9|public final void join() throws Interrupted Exception|普通|等待线程死亡|
+|10|public final synchronized void join(long millis) throws InterruptedException|普通|等待millis毫秒后线程死亡|
+|11|public void run()|普通|执行线程|
+|12|public final void setName(String name)|普通|设定线程名称|
+|13|public final void setPriority(int newPriority)|普通|设定线程优先级|
+|14|public static void sleep(long millis) throws InterruptedException|普通|使当前线程休眠millis毫秒|
+|15|public void start()|普通|开始执行线程|
+|16|public String toString|普通|返回代表线程的字符串|
+|17|public static void yield()|普通|暂停当前线程，允许其他线程执行|
+|18|public final void setDaemon(boolean on)|普通|将一个线程设置成后台运行|
+
+#### 同步与死锁
+
+同步代码块格式：
+```java
+synchronized(同步对象){
+    需要同步的代码 ;
+}
+```
+同步方法格式：
+```java
+synchronized 方法返回值 方法名称(参数列表){
+}
+```
+方法定义的完整格式：  
+```java
+访问权限{public|default|protected|private} [final] [static] [synchronized]   
+返回值类型|void 方法名称(参数类型 参数名称,...) [throws Exception1,Exception2] {
+ [return [返回值|返回调用处]];
+}
+```

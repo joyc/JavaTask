@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>JS计算器</title>
+<script type="text/javascript">   
+	function getResult(ca){   
+	if(checkData()){   
+	}   
+	var n1=parseInt(document.jsq.n1.value);   
+	var n2=parseInt(document.jsq.n2.value);   
+	var result;   
+	switch(ca){   
+	case '+':   
+	result = n1 + n2;   
+	break;   
+	case '-':   
+	result = n1 - n2;   
+	break;   
+	case '*':   
+	result = n1 * n2;   
+	break;   
+	case '/':   
+	result = n1 / n2;   
+	break;   
+	}   
+	document.jsq.result.value=result;   
+	}   
+	function checkData(){   
+	if(document.jsq.n1.value==""){   
+	alert("第1个数字不能为空!");   
+	return;   
+	}   
+	if(document.jsq.n2.value==""){   
+	alert("第2个数字不能为空!");   
+	return;   
+	}   
+	if(document.jsq.n1.value=="0"){   
+	alert("第1个数字不能为0!");   
+	return;   
+	}   
+	if(isNaN(document.jsq.n1.value)){   
+	alert("请填写数字!");   
+	return;   
+	}   
+	if(isNaN(document.jsq.n2.value)){   
+	alert("请填写数字!");   
+	}   
+	}   
+	</script>
+</head>
+<body>
+<table align="center">
+	<form name="jsq">
+	<tr>
+		<td>数字1:<input name="n1"/></td>
+	</tr>
+	<tr>
+		<td>数字2:<input name="n2"/></td>
+	</tr>
+	<tr>
+		<td>结 果:<input name="result"/></td>
+	</tr>
+	<tr>
+		<td colspan="4" align="center">
+			<input type="button" value="加" onclick="getResult('+')"/> 
+			<input type="button" value="减" onclick="getResult('-')"/> 
+			<input type="button" value="乘" onclick="getResult('*')"/> 
+			<input type="button" value="除" onclick="getResult('/')"/>
+		</td>
+	</tr>
+	</form>
+</table>
+</body>
+</html>

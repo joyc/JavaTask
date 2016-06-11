@@ -1,10 +1,13 @@
 package task4;
 
+import java.io.File;
+
 public class cunqian {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		File file = new File("D:" + File.separator + "test.txt");
 		System.out.println("bye");
+		
 	}
 
 }

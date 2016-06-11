@@ -6,6 +6,7 @@ public class cunqian {
 
 	public static void main(String[] args) {
 		File file = new File("D:" + File.separator + "test.txt");
+		System.out.println("test");
 		System.out.println("bye");
 		
 	}

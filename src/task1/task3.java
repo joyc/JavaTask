@@ -1,9 +1,9 @@
-package com.jkxy.task3;
+package task1;
 
 /**
  * Created by Rusher on 2015/11/30.
  */
-public class Main { //创建主类
+public class task3 { //创建主类
     public static void main(String[] args){ //创建主函数方法
 
     int[] myArray ={11,23,15,22,56,27,33,36,48,66}; //给出十组数值

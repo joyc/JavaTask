@@ -1,4 +1,4 @@
-package Mp3IO;
+package task1;
 
 import java.io.File;
 import java.io.FilenameFilter;

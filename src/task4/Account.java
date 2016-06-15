@@ -9,7 +9,12 @@ class Account {
 		for (int i = 1; i < 1000; i++) {	// 执行1000次存取操作
 			new Thread(op).start();
 		}
-        op.getBalance();
+		try {
+			Thread.sleep(1000);
+			op.getBalance();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
